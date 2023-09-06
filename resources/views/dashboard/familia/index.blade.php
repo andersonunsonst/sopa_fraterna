@@ -24,7 +24,8 @@
                     <th>Telefone</th>
                     <th>E-mail</th>
                     <th></th>
-        
+                    <th></th>
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,11 +34,13 @@
                         <td>{{ $familia->nome }}</td>
                         <td>{{ $familia->telefone }}</td>
                         <td>{{ $familia->email }}</td>
-                        <td>
-                        <a href="{{ url('/familia/' . $familia->id) }}" class="btn btn-block btn-primary">View</a>
-                        </td>
+                
                         <td>
                         <a href="{{ url('/familia/' . $familia->id . '/edit') }}" class="btn btn-block btn-primary">Edit</a>
+                        </td>
+                        <td>
+                        <a href="{{ url('/familia/' . $familia->id . '/membro/create') }}" class="btn btn-block btn-primary">Add Membro</a>
+                        <a href="{{ url('/familia/' . $familia->id . '/membro') }}" class="btn btn-block btn-primary">Ver Membros</a>
                         </td>
                         <td>
                    

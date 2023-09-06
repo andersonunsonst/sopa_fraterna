@@ -9,14 +9,20 @@
     <li><a href="{{route('alimento')}}">Alimentos</a></li>
     <li><a href="{{route('familia')}}">Familias</a>
       <!-- <ul>
-        <li><a href="#"> familia 1</a></li>
-        <li><a href="#">familia 2</a></li>
-        <li><a href="#">familia 3</a></li>
-        <li><a href="#">familia 4</a></li>
+        <li><a href="#"> membros</a></li>
       </ul> -->
     </li>
 
-    <li><a href="{{route('cesta')}}">Cesta Básica</a></li>
+    <li><a href="#">Cesta Básica</a>
+    <ul>
+      <li> 
+        <a href="{{route('create_cesta')}}">Montar cesta </a>
+      </li>
+      <li> 
+        <a href="{{route('cesta')}}">Vincular Familia </a>
+      </li>
+    </ul>
+  </li>
 </ul>
 </nav>
 </aside>

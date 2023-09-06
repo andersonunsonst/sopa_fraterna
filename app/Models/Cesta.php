@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
@@ -11,17 +13,25 @@ class Cesta extends Model
 {
     use HasFactory;
 
-    protected $table = 'cesta';
-
     protected $fillable = [
         'tipo_cesta',
-        'data_entrega'
 
     ];
 
-    public function familia(): HasOne
+    // public function familia(): HasOne
+    // {
+    //     return $this->hasOne(Familia::class);
+    // }
+
+
+
+    public function alimentos()
     {
-        return $this->hasOne(Familia::class);
+       return $this->belongsToMany(Alimento::class);
     }
 
+    // public function alimentoCesta(): HasMany
+    // {
+    //     return $this->hasMany(alimentoCesta::class);
+    // }
 }

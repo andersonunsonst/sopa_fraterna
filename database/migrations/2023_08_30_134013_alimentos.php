@@ -19,6 +19,12 @@ return new class extends Migration
             $table->date('validade');
             $table->timestamps();
         });
+
+        Schema::create('alimento_cesta', function(Blueprint $table){
+            $table->foreignId('alimento_id')->constrained('alimentos');
+            $table->foreignId('cesta_id')->constrained('cestas');
+            $table->timestamps();
+         });
     }
 
     /**

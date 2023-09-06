@@ -5,8 +5,8 @@
 <div class="container-fluid">
     <div class="animated fadeIn">
     <div class="callout callout-info">
-        <h5><i class="fas fa-info"></i> cestas</h5>
-        <a href="{{url('cesta/create')}}" class="btn btn-info" role="button">Nova cesta</a>
+        <h5><i class="fas fa-info"></i> membros</h5>
+        <a href="{{url('membro/create')}}" class="btn btn-info" role="button">Nova membro</a>
     </div>
     @if(session()->has('message'))
     <div class="alert alert-success">
@@ -20,31 +20,30 @@
                 <table class="table table-responsive-sm table-striped" >
                 <thead>
                     <tr>
-                    <th>Id</th>
-                    <th>Tipo Cesta</th>
-     
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
                     <th></th>
-        
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cestas as $cesta)
+                    @foreach($membros as $membro)
                     <tr>
-                        <td>{{ $cesta->id }}</td>
-                        <td>{{ $cesta->tipo_cesta }}</td>
+                        <td>{{ $membro->nome }}</td>
+                        <td>{{ $membro->telefone }}</td>
+                        <td>{{ $membro->email }}</td>
+                
+                        <td>
+                        <a href="{{ url('/membro/' . $membro->id . '/edit') }}" class="btn btn-block btn-primary">Edit</a>
+                        </td>
                   
                         <td>
-                      
-                        </td>
-                        <td>
-                      
-                        </td>
-                        <td>
                    
-                        <form action="{{ route('cesta.destroy', $cesta->id ) }}" method="POST">
+                        <form action="{{ route('membro.destroy', $membro->id ) }}" method="POST">
                             @method('DELETE')
                             @csrf
-             
+                            <button class="btn btn-block btn-danger">Remover</button>
                         </form>
                     
                         </td>

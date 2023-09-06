@@ -19,8 +19,8 @@ class CestaController extends Controller
 
     public function create()
     {
-        $familias = Familia::pluck('nome', 'id');
-        return view('dashboard.cesta.create', [ 'familias'=>$familias]);
+        $alimentos = Alimento::pluck('nome', 'id');
+        return view('dashboard.cesta.create', [ 'alimentos'=>$alimentos]);
     }
 
     public function edit($Cesta_id)
@@ -35,20 +35,25 @@ class CestaController extends Controller
         $data = $request->all();
         $Cesta = Cesta::find($Cesta_id);
         $Cesta->update($data);
-        return redirect('/cesta')->with('message', 'Colagorador atualizado com sucesso!');
+        return redirect('/cesta')->with('message', 'colaborador atualizado com sucesso!');
     }
 
     public function save(Request $request){
         $data = $request->all();
-        $Cesta = new Cesta();
-        $Cesta->create($data); 
-        return redirect('/cesta')->with('message', 'Colagorador criado com sucesso!');
+     
+        $alimento = Alimento::find($data['alimento_id']);
+
+        $cesta = Cesta::find(1);
+        $cesta->alimentos()->attach($alimento);
+  
+
+        return redirect('/cesta')->with('message', 'colaborador criado com sucesso!');
     }
 
     public function destroy($Cesta_id){
   
         $Cesta =  Cesta::find($Cesta_id);
         $Cesta->delete(); 
-        return redirect('/cesta')->with('message', 'Colagorador removido com sucesso');
+        return redirect('/cesta')->with('message', 'colaborador removido com sucesso');
     }
 }

@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cesta', function (Blueprint $table) {
+        Schema::create('cestas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('familia_id')->references('id')->on('familias')->onDelete('cascade');
             $table->string('tipo_cesta');
-            $table->date('data_entrega');
             $table->timestamps();
         });
     }

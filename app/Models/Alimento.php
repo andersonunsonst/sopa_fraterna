@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Alimento extends Model
 {
@@ -13,8 +14,13 @@ class Alimento extends Model
         'nome', 'quantidade', 'tipo_quantidade', 'validade'
     ];
 
-    public function cesta(){
-        return $this->belongsTo(Cesta::class);
+    // public function cestas(){
+    //     return $this->belongsToMany(Cesta::class, 'alimentocesta', 'id', 'cesta_id');
+    // }
+
+    public function cestas()
+    {
+        return $this->belongsToMany(Cesta::class);
     }
 
 }

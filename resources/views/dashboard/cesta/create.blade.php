@@ -8,33 +8,30 @@
               <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
                 <div class="card">
                     <div class="card-header">
-                      <i class="fa fa-align-justify"></i>  </div>
+                      <i class="fa fa-align-justify"></i>Montar nova cesta  </div>
                     <div class="card-body">
                         <br>
-                        <form method="POST" action="/colaborador">
+                        <form method="POST" action="/cesta">
                             @csrf
                             @method('POST')
 
                             <div class="form-group">
-                                <label>Familias</label>
-                                <select name="familia_id">
-                                    @foreach ($familias as $key=>$familia)
-                                        <option value="{{$key}}">{{$familia}}</option>
+                                <label>Alimentos</label>
+                                <select name="alimento_id[]" multiple>
+                                    @foreach ($alimentos as $key=>$alimento)
+                                        <option value="{{$key}}">{{$alimento}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label>Tipo Cesta</label>
-                                <select name="tipo_cesta">
-                                   
+                                <select name="tipo_cesta">                             
                                         <option value="pequena">Pequena</option>
                                         <option value="media">Média</option>
                                         <option value="grande">Grande</option>
                                 </select>
                             </div>
-
-     
 
 
                             <button class="btn btn-block btn-success" type="submit">Enviar</button>
