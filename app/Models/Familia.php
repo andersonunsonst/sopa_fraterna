@@ -26,14 +26,14 @@ class Familia extends Model
 
     ];
 
-    // public function cesta(): BelongsTo
-    // {
-    //     return $this->belongsTo(Cesta::class);
-    // }
-
     public function membro(): BelongsToMany
     {
        return $this->belongsToMany(MembroFamilia::class, 'membroFamiliar', 'familia_id');
+    }
+
+    public function cestas(): BelongsToMany
+    {
+       return $this->belongsToMany(Cesta::class);
     }
        
 }

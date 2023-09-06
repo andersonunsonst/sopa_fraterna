@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cesta;
 use App\Models\Familia;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,18 @@ class FamiliaController extends Controller
     {
         $Familias = Familia::all();
         return view('dashboard.familia.index', ['familias'=>$Familias]);
+    }
+
+    public function cesta($Familia_id)
+    {
+        // $cestas = Familia::with('cestas')->where(['id'=>$Familia_id])->get();
+
+        $cestas = Familia::join('cesta_familia', 'familias.id', '=', 'cesta_familia.familia_id')
+        ->join('cestas', 'cesta_familia.cesta_id', '=', 'cestas.id')
+        ->where('cesta_familia.familia_id', $Familia_id)
+        ->get();
+
+        return view('dashboard.cestafamilia.index', ['cestas'=>$cestas]);
     }
 
     public function create()

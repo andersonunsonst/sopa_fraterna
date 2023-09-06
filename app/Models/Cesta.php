@@ -18,20 +18,16 @@ class Cesta extends Model
 
     ];
 
-    // public function familia(): HasOne
-    // {
-    //     return $this->hasOne(Familia::class);
-    // }
-
-
 
     public function alimentos()
     {
        return $this->belongsToMany(Alimento::class);
     }
 
-    // public function alimentoCesta(): HasMany
-    // {
-    //     return $this->hasMany(alimentoCesta::class);
-    // }
+    public function familias()
+    {
+        return $this->belongsToMany(Familia::class);
+    }
+
+
 }

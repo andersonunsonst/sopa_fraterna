@@ -42,8 +42,10 @@ class CestaController extends Controller
         $data = $request->all();
      
         $alimento = Alimento::find($data['alimento_id']);
-
-        $cesta = Cesta::find(1);
+        $cesta = new Cesta();
+        $idCesta = $cesta->create($data)->id;
+    
+        $cesta = Cesta::find($idCesta);
         $cesta->alimentos()->attach($alimento);
   
 

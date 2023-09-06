@@ -26,6 +26,12 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
+
+        Schema::create('cesta_familia', function(Blueprint $table){
+            $table->foreignId('familia_id')->constrained('familias');
+            $table->foreignId('cesta_id')->constrained('cestas');
+            $table->timestamps();
+         });
     }
 
     /**
@@ -33,6 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('cesta_familia');
         Schema::dropIfExists('familias');
     }
 };

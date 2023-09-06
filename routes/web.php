@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlimentoController;
 use App\Http\Controllers\CestaController;
+use App\Http\Controllers\CestaFamiliaController;
 use App\Http\Controllers\ColaboradoresController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\FamiliaController;
@@ -62,12 +63,18 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::post('/familia/{familia_id}/membro', [MembroController::class, 'save'])->name('create_membro');
     Route::delete('/familia/destroy/{familia_id}/membro', [FamiliaController::class, 'destroy'])->name('membro.destroy');
 
+    Route::get('/familia/{familia_id}/cesta', [CestaFamiliaController::class, 'index'])->name('cestafamilia');
+    Route::get('/familia/{familia_id}/cesta/create', [CestaFamiliaController::class, 'create'])->name('create_cestafamilia');
+    Route::post('/familia/{familia_id}/cesta', [CestaFamiliaController::class, 'save'])->name('create_cestafamilia');
+    Route::delete('/familia/destroy/{familia_id}/cesta', [CestaFamiliaController::class, 'destroy'])->name('cestafamilia.destroy');
+
     Route::get('/cesta', [CestaController::class, 'index'])->name('cesta');
     Route::post('/cesta', [CestaController::class, 'save']);
     Route::get('/cesta/create', [CestaController::class, 'create'])->name('create_cesta');
     Route::get('/cesta/{colaborador_id}/edit', [CestaController::class, 'edit'])->name('edit_cesta');
     Route::delete('/cesta/destroy/{cesta_id}', [CestaController::class, 'destroy'])->name('cesta.destroy');
     Route::put('/cesta/{cesta_id}', [CestaController::class, 'update']);
+    Route::get('/familia/{familia_id}/cestas', [FamiliaController::class, 'cesta'])->name('cesta_familia');
 
     Route::get('/alimento', [AlimentoController::class, 'index'])->name('alimento');
     Route::post('/alimento', [AlimentoController::class, 'save']);

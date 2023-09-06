@@ -18,9 +18,7 @@
       <li> 
         <a href="{{route('create_cesta')}}">Montar cesta </a>
       </li>
-      <li> 
-        <a href="{{route('cesta')}}">Vincular Familia </a>
-      </li>
+  
     </ul>
   </li>
 </ul>
